@@ -19,7 +19,7 @@ This is a simple RESTful API built using **Node.js**, **Express**, and **MySQL**
 
 - Node.js
 - Express.js
-- MySQL (with `mysql2`)
+- MySQL (`mysql2`)
 - dotenv
 - REST API
 
@@ -32,13 +32,30 @@ This is a simple RESTful API built using **Node.js**, **Express**, and **MySQL**
 ```bash
 git clone https://github.com/yourusername/notes-api.git
 cd notes-api
+```
+
+### 2. Install dependencies
+
+```bash
 npm install
- #Create .env file
+```
+
+### 3. Create `.env` file
+
+Create a `.env` file in the root directory and add your MySQL credentials:
+
+```env
 MYSQL_HOST=localhost
 MYSQL_USER=root
 MYSQL_PASSWORD=yourpassword
 MYSQL_DATABASE=notesdb
-4. Create MySQL table
+```
+
+### 4. Set up MySQL database
+
+Run the following SQL commands in your MySQL console:
+
+```sql
 CREATE DATABASE IF NOT EXISTS notesdb;
 
 USE notesdb;
@@ -49,3 +66,58 @@ CREATE TABLE notes (
   contents TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+```
+
+### 5. Start the server
+
+```bash
+node index.js
+```
+
+Your server will be running at: [http://localhost:8080](http://localhost:8080)
+
+---
+
+## 📮 API Endpoints
+
+### `GET /notes`
+Retrieve all notes.
+
+### `GET /notes/:id`
+Retrieve a single note by its ID.
+
+### `POST /notes`
+Create a new note.  
+**Request body:**
+```json
+{
+  "title": "My Note Title",
+  "contents": "This is the content of the note."
+}
+```
+
+---
+
+## 📁 Folder Structure
+
+```
+.
+├── index.js         # Main server file
+├── database.js      # DB logic and queries
+├── .env             # Environment variables (not committed)
+├── package.json
+└── README.md
+```
+
+---
+
+## 👨‍💻 Author
+
+**Ghaitaoui Moulay El Hadj**  
+[GitHub](https://github.com/moulayghaitaoui)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
